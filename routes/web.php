@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return 'hello, world!';
 });
+
+/*Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});*/
