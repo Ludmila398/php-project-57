@@ -24,4 +24,12 @@ test:
 
 build:
 	npm ci && npm run build
-		
+
+setup:
+	cp .env.example .env
+	composer install
+	php artisan key:generate
+	npm install
+	npm ci
+	npm run build
+	
