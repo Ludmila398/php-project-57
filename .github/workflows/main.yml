@@ -1,4 +1,4 @@
-name: PHP Linter and Tests
+name: Linter and Tests
 
 on:
   push:
