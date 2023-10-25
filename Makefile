@@ -17,10 +17,10 @@ lint-fix:
 	composer exec --verbose phpcbf -- --standard=PSR12 app routes
 
 test-coverage:
-	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml	
+	composer exec --verbose php artisan test -- --coverage-clover build/logs/clover.xml	
 
 test:
-	composer exec --verbose phpunit tests -- --coverage-text
+	php artisan test
 
 build:
 	npm ci && npm run build

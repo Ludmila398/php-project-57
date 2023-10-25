@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1692986602">
-  <project timestamp="1692986602">
+<coverage generated="1698253148">
+  <project timestamp="1698253148">
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Console/Kernel.php">
       <class name="App\Console\Kernel" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
@@ -14,18 +14,19 @@
     </file>
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Exceptions/Handler.php">
       <class name="App\Exceptions\Handler" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="4" coveredelements="2"/>
       </class>
-      <line num="24" type="method" name="register" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="26" type="stmt" count="1"/>
-      <line num="28" type="stmt" count="1"/>
-      <metrics loc="31" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      <line num="25" type="method" name="register" visibility="public" complexity="1" crap="1.04" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="1"/>
+      <metrics loc="32" ncloc="24" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="4" coveredelements="2"/>
     </file>
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Http/Controllers/Controller.php">
       <class name="App\Http\Controllers\Controller" namespace="global">
         <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </class>
-      <metrics loc="13" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <metrics loc="14" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Http/Kernel.php">
       <class name="App\Http\Kernel" namespace="global">
@@ -99,11 +100,17 @@
       </class>
       <metrics loc="18" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
+    <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Models/TaskStatus.php">
+      <class name="App\Models\TaskStatus" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Models/User.php">
       <class name="App\Models\User" namespace="global">
         <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </class>
-      <metrics loc="46" ncloc="30" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <metrics loc="48" ncloc="32" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Providers/AppServiceProvider.php">
       <class name="App\Providers\AppServiceProvider" namespace="global">
@@ -159,6 +166,6 @@
       <line num="38" type="stmt" count="1"/>
       <metrics loc="41" ncloc="31" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="9" elements="11" coveredelements="9"/>
     </file>
-    <metrics files="19" loc="535" ncloc="391" classes="10" methods="13" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="18" elements="44" coveredelements="25"/>
+    <metrics files="20" loc="551" ncloc="408" classes="10" methods="13" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="18" elements="45" coveredelements="24"/>
   </project>
 </coverage>
