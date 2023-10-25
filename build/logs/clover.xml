@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698253148">
-  <project timestamp="1698253148">
+<coverage generated="1698257704">
+  <project timestamp="1698257704">
     <file name="/home/gubanova_ubuntu/HEXLET/php-project-57/app/Console/Kernel.php">
       <class name="App\Console\Kernel" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
