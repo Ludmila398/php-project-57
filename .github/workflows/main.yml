@@ -18,9 +18,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: laravel
         ports:
           - 5432:5432
         options:
@@ -36,10 +36,14 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
           php-version: '8.1'
-          extensions: pdo_pgsql    
+          extensions: pdo_pgsql, pgsql    
     
     - name: Setup project
-      run: make setup  
+      run: make setup
+      
+    - name: Run migrations (PostgreSQL)
+      run: |
+        php artisan migrate --force  
         
     - name: Run Linter
       run: make lint
