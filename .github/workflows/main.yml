@@ -24,6 +24,9 @@ jobs:
     
     - name: Setup project
       run: make setup  
+
+    - name: Run database prepare
+      run: make database-prepare  
         
     - name: Run Linter
       run: make lint
