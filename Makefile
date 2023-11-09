@@ -32,8 +32,3 @@ setup:
 	npm install
 	npm ci
 	npm run build
-
-database-prepare:
-	cp -n .env.example .env || true
-	touch database/database.sqlite
-	php artisan migrate:fresh --force --seed
