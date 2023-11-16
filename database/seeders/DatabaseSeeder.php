@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\TaskStatus;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $statusNames = [
+            ['name' => 'новый'],
+            ['name' => 'завершен'],
+            ['name' => 'в работе'],
+            ['name' => 'на тестировании'],
+            ];
+
+        foreach ($statusNames as $statusName) {
+            TaskStatus::factory()->create($statusName);
+        }
+      
     }
 }
