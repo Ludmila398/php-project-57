@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskStatusRequest;
 use App\Http\Requests\UpdateTaskStatusRequest;
 use App\Models\TaskStatus;
+use Illuminate\Support\Facades\Auth;
 
 class TaskStatusController extends Controller
 {
+    /**
+     * Create the controller instance.
+     */
+
+   /*  public function __construct()
+    {
+        $this->authorizeResource(TaskStatus::class, 'task_status', [
+            'except' => ['index'],
+        ]);
+    }
+*/
     /**
      * Display a listing of the resource.
      */
@@ -22,7 +34,11 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user() === null) {
+            abort(403);
+        }
+        $task_status = new TaskStatus();
+        return view('TaskStatus.create', compact('task_status'));
     }
 
     /**
@@ -30,7 +46,17 @@ class TaskStatusController extends Controller
      */
     public function store(StoreTaskStatusRequest $request)
     {
-        //
+        if (Auth::user() === null) {
+            abort(403);
+        }
+
+        $data = $request->validated();
+
+        TaskStatus::create($data);
+
+        flash(__('messages.status.created'), 'success');
+
+        return redirect()->route('task_statuses.index');
     }
 
     /**

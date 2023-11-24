@@ -11,7 +11,7 @@ class StoreTaskStatusRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StoreTaskStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:App\Models\TaskStatus|string',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.unique' => __('strings.status exists'),
         ];
     }
 }
