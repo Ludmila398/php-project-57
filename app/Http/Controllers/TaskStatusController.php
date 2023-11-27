@@ -10,17 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class TaskStatusController extends Controller
 {
     /**
-     * Create the controller instance.
-     */
-
-   /*  public function __construct()
-    {
-        $this->authorizeResource(TaskStatus::class, 'task_status', [
-            'except' => ['index'],
-        ]);
-    }
-*/
-    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -80,6 +69,14 @@ class TaskStatusController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
+
+        $data = $request->validated();
+
+        $taskStatus->update($data);
+
+        flash(__('messages.status.modified'))->success();
+
+        return redirect()->route('task_statuses.index');
     }
 
     /**
@@ -90,5 +87,15 @@ class TaskStatusController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
+
+        if ($taskStatus->tasks()->exists()) {
+            flash(__('messages.status.deleted.error'))->error();
+        } else {
+            $taskStatus->delete();
+
+            flash(__('messages.status.deleted'))->success();
+        };
+
+        return redirect()->route('task_statuses.index');
     }
 }
