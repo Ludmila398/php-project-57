@@ -54,25 +54,22 @@ class TaskStatusController extends Controller
 
         TaskStatus::create($data);
 
-        flash(__('messages.status.created'), 'success');
+        //flash(__('messages.status.created'), 'success');
+        flash(__('messages.status.created'))->success();
 
         return redirect()->route('task_statuses.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TaskStatus $taskStatus)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(TaskStatus $taskStatus)
     {
-        //
+        if (Auth::user() === null) {
+            abort(403);
+        }
+        return view('TaskStatus.edit', compact('taskStatus'));
     }
 
     /**
@@ -80,7 +77,9 @@ class TaskStatusController extends Controller
      */
     public function update(UpdateTaskStatusRequest $request, TaskStatus $taskStatus)
     {
-        //
+        if (Auth::user() === null) {
+            abort(403);
+        }
     }
 
     /**
@@ -88,6 +87,8 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus)
     {
-        //
+        if (Auth::user() === null) {
+            abort(403);
+        }
     }
 }
