@@ -35,7 +35,7 @@
                          
                           <!-- сделать позже задания статусы и метки-->
                             <li>
-                                <a href="https://php-task-manager-ru.hexlet.app/tasks" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
+                                <a href="{{ route('tasks.index') }}" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
                                     {{ __('strings.tasks') }}                                </a>
                             </li>
                             <li>
@@ -43,7 +43,7 @@
                                     {{ __('strings.statuses') }}                                </a>
                             </li>
                             <li>
-                                <a href="https://php-task-manager-ru.hexlet.app/labels" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
+                                <a href="{{ route('labels.index') }}" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
                                     {{ __('strings.labels') }}                                </a>
                             </li>
                         </ul>

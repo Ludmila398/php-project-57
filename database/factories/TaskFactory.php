@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\TaskStatus;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
@@ -17,7 +19,11 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->unique()->sentence(random_int(1, 6)),
+            'description' => fake()->sentence(random_int(6, 15)),
+            'status_id' => TaskStatus::get()->random()->id,
+            'created_by_id' => User::get()->random()->id,
+            'assigned_to_id' => User::get()->random()->id,
         ];
     }
 }

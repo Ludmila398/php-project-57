@@ -12,7 +12,8 @@ class LabelController extends Controller
      */
     public function index()
     {
-        //
+        $labels = Label::all();
+        return view('Label.index', compact('labels'));
     }
 
     /**
@@ -28,15 +29,7 @@ class LabelController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Label $label)
-    {
-        //
+        
     }
 
     /**
