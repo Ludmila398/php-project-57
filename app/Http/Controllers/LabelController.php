@@ -29,7 +29,7 @@ class LabelController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
