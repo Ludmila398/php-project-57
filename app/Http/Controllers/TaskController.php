@@ -58,7 +58,21 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validated();
+
+        $data = $request->except('labels');
+        $data['created_by_id'] = optional(auth()->user())->id;
+
+        $labels = collect($request->input('labels'))
+        ->filter(fn($label) => $label !== null);
+
+        $task = Task::create($data);
+
+        $task->labels()->attach($labels);
+
+        flash(__('messages.task.created'), 'success');
+
+        return redirect()->route('tasks.index');
     }
 
     /**
