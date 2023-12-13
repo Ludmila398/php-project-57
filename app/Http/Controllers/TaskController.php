@@ -9,6 +9,9 @@ use Spatie\QueryBuilder\AllowedFilter;
 use App\Models\User;
 use App\Models\TaskStatus;
 use App\Models\Label;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
@@ -46,6 +49,9 @@ class TaskController extends Controller
      */
     public function create()
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $taskStatuses = TaskStatus::select('name', 'id')->pluck('name', 'id');
         $users = User::select('name', 'id')->pluck('name', 'id');
         $labels = Label::select('name', 'id')->pluck('name', 'id');
@@ -56,8 +62,12 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
+
         $request->validated();
 
         $data = $request->except('labels');
@@ -70,7 +80,7 @@ class TaskController extends Controller
 
         $task->labels()->attach($labels);
 
-        flash(__('messages.task.created'), 'success');
+        flash(__('messages.task.created'))->success();
 
         return redirect()->route('tasks.index');
     }
