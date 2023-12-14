@@ -135,7 +135,6 @@ class TaskController extends Controller
         flash(__('messages.task.updated'))->success();
 
         return redirect()->route('tasks.index');
-
     }
 
     /**
@@ -143,8 +142,15 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        if (Auth::user() === null) {
+        if ((Auth::user() === null) || (Auth::id() !== $task->createdByUser->id)) {
             abort(403);
         }
+
+        $task->labels()->detach();
+        $task->delete();
+
+        flash(__('messages.task.deleted'), 'success');
+
+        return redirect()->route('tasks.index');
     }
 }

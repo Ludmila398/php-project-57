@@ -19,11 +19,11 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->sentence(random_int(1, 6)),
-            'description' => fake()->sentence(random_int(6, 15)),
-            'status_id' => TaskStatus::get()->random()->id,
-            'created_by_id' => User::get()->random()->id,
-            'assigned_to_id' => User::get()->random()->id,
+            'name' => fake()->sentence(),
+            'description' => fake()->sentence(),
+            'status_id' => TaskStatus::factory()->create()->id,
+            'created_by_id' => User::factory()->create()->id,
+            'assigned_to_id' => User::factory()->create()->id,
         ];
     }
 }
