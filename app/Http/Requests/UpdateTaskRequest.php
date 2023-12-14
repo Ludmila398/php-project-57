@@ -11,7 +11,7 @@ class UpdateTaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class UpdateTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:tasks,name,' . $this->task->id,
+            'description' => '',
+            'status_id' => 'required|exists:App\Models\TaskStatus,id',
+            'assigned_to_id' => 'nullable|exists:App\Models\User,id',
+            'labels' => '',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.unique' => __('strings.task exists'),
         ];
     }
 }
