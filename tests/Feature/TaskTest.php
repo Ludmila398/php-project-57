@@ -12,13 +12,12 @@ use App\Models\Task;
 
 class TaskTest extends TestCase
 {
+    use RefreshDatabase;
     private User $user;
     private User $newUser;
     private Task $task;
     private array $newTaskData;
     private array $taskDataForUpdate;
-
-    use RefreshDatabase;
 
     public function setUp(): void
     {
@@ -120,7 +119,6 @@ class TaskTest extends TestCase
             ->delete(route('tasks.destroy', ['task' => $this->task]));
 
         $response->assertStatus(403);
-    
     }
 
     public function testDestroy(): void

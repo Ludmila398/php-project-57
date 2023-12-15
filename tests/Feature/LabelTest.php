@@ -8,15 +8,13 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Label;
 
-
 class LabelTest extends TestCase
 {
+    use RefreshDatabase;
     private User $user;
     private Label $label;
     private string $fakeNameForLabel;
     private string $fakeNameForUpdateLabel;
-
-    use RefreshDatabase;
 
     public function setUp(): void
     {
@@ -102,7 +100,6 @@ class LabelTest extends TestCase
             ->delete(route('labels.destroy', ['label' => $this->label]));
 
         $response->assertStatus(403);
-    
     }
 
     public function testDestroy(): void
