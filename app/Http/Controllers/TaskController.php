@@ -15,6 +15,10 @@ use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Task::class, 'task');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -50,9 +54,6 @@ class TaskController extends Controller
      */
     public function create()
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $taskStatuses = TaskStatus::select('name', 'id')->pluck('name', 'id');
         $users = User::select('name', 'id')->pluck('name', 'id');
         $labels = Label::select('name', 'id')->pluck('name', 'id');
@@ -65,10 +66,6 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $request->validated();
 
         $data = $request->except('labels');
@@ -101,10 +98,6 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $taskStatuses = TaskStatus::all();
         $users = User::select('name', 'id')->pluck('name', 'id');
         $taskLabels = $task->labels;
@@ -118,10 +111,6 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $request->validated();
 
         $data = $request->except('labels');
@@ -143,10 +132,6 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        if (!Auth::check() || (Auth::id() !== $task->createdByUser->id)) {
-            abort(403);
-        }
-
         $task->labels()->detach();
         $task->delete();
 
