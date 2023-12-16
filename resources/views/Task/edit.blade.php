@@ -47,7 +47,13 @@
                 {{ Form::label("assigned_to_id", __('strings.executor')) }}
             </div>
             <div class="mt-2">
-                {{ Form::select('assigned_to_id', $users, $task->assignedToUser->id, ['class' => 'rounded border border-gray-300 w-1/3 p-2 bg-white', 'placeholder' => '----------']) }}
+                @if ($task->assigned_to_user == null)
+                    {{ Form::select('assigned_to_id', $users, null, ['class' => 'rounded border border-gray-300 w-1/3 p-2 bg-white', 'placeholder' => '----------']) }}
+                @else
+                    {{ Form::select('assigned_to_id', $users, $task->assigned_to_user->id, ['class' => 'rounded border border-gray-300 w-1/3 p-2 bg-white', 'placeholder' => '----------']) }}
+                @endif
+            </div>
+            
             @error('assigned_to_id')
             <div class="text-rose-600">
                 {{ $message }}
