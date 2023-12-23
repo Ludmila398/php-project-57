@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskStatusController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(TaskStatus::class, 'task_status');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -23,11 +27,8 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-        $task_status = new TaskStatus();
-        return view('TaskStatus.create', compact('task_status'));
+        $taskStatus = new TaskStatus();
+        return view('TaskStatus.create', compact('taskStatus'));
     }
 
     /**
@@ -35,15 +36,10 @@ class TaskStatusController extends Controller
      */
     public function store(StoreTaskStatusRequest $request)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $request->validated();
 
         TaskStatus::create($data);
 
-        //flash(__('messages.status.created'), 'success');
         flash(__('messages.status.created'))->success();
 
         return redirect()->route('task_statuses.index');
@@ -55,9 +51,6 @@ class TaskStatusController extends Controller
      */
     public function edit(TaskStatus $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         return view('TaskStatus.edit', compact('taskStatus'));
     }
 
@@ -66,10 +59,6 @@ class TaskStatusController extends Controller
      */
     public function update(UpdateTaskStatusRequest $request, TaskStatus $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $request->validated();
 
         $taskStatus->update($data);
@@ -84,10 +73,6 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         if ($taskStatus->tasks()->exists()) {
             flash(__('messages.status.deleted.error'))->error();
         } else {

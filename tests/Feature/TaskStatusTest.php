@@ -22,8 +22,8 @@ class TaskStatusTest extends TestCase
         parent::setUp();
         $this->user = User::factory()->create();
         $this->taskStatus = TaskStatus::factory()->create();
-        $this->fakeNameForTaskStatus = fake()->word();
-        $this->fakeNameForTaskStatusUpdate = fake()->word();
+        $this->fakeNameForTaskStatus = TaskStatus::factory()->create();
+        $this->fakeNameForTaskStatusUpdate = TaskStatus::factory()->create();
     }
 
 

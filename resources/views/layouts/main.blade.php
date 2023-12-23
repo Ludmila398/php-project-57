@@ -8,7 +8,7 @@
         <meta name="csrf-param" content="_token" />
 
         <title>Менеджер задач</title>
-      <!--   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> вроде нужен для флеш сообщений, но сбивает шрифт-->
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>

@@ -22,8 +22,8 @@ class LabelTest extends TestCase
         parent::setUp();
         $this->user = User::factory()->create();
         $this->label = Label::factory()->create();
-        $this->fakeNameForLabel = fake()->name();
-        $this->fakeNameForUpdateLabel = fake()->name();
+        $this->fakeNameForLabel = Label::factory()->create();
+        $this->fakeNameForUpdateLabel = Label::factory()->create();
     }
 
     public function testIndex(): void
