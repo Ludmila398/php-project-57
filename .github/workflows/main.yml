@@ -46,10 +46,7 @@ jobs:
         php artisan migrate --force  
         
     - name: Run Linter
-      run: make lint
-      
-    - name: Run tests
-      run: make test  
+      run: make lint 
       
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v5.0.0

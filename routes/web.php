@@ -25,6 +25,12 @@ require __DIR__ . '/auth.php';
 
 Route::resource('tasks', TaskController::class);
 
-Route::resource('labels', LabelController::class)->except(['show']);
+//Route::resource('labels', LabelController::class)->except(['show']);
+Route::resource('labels', LabelController::class)->only([
+'index', 'create', 'store', 'edit', 'update', 'destroy'
+]);
 
-Route::resource('task_statuses', TaskStatusController::class)->except(['show']);
+//Route::resource('task_statuses', TaskStatusController::class)->except(['show']);
+Route::resource('task_statuses', TaskStatusController::class)->only([
+    'index', 'create', 'store', 'edit', 'update', 'destroy'
+    ]);
